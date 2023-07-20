@@ -1,0 +1,36 @@
+<html><head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Cohost inline gallery generator</title>
+	<link rel="stylesheet" href="style.css" />
+</head><body>
+	<style id="preview-css"></style>
+	<div class="page">
+		<h1>Inline gallery generator for cohost!</h1>
+		Input images (one per line; URL, <code>![alt](url)</code>, or <code>&lt;img&gt;</code>):<br>
+		(NB! images should be the same size)
+		<textarea id="in">![An image of the ct.js mascot, a sort of blue blob-cat. It is smiling.](https://cohost.org/api/v1/attachments/209ba72b-d829-4830-a243-1b8f2529bc1e)
+![With power of Inkscape, the cat now is now holding a knife in its paw.](https://cohost.org/api/v1/attachments/03b88f58-9c99-49aa-97fb-229d0cc1ab35)
+![The cat now has two knives.](https://cohost.org/api/v1/attachments/6c892384-eb92-4241-a6ed-6320318e9cca)
+![The cat is now holding a knife with its tail as well.](https://cohost.org/api/v1/attachments/3f9b389c-5ab7-43b7-949a-640629494b9f)
+![There is now a second, smaller cat, with its own knife. The knife is too big. The cat grips onto it with both of its little paws](https://cohost.org/api/v1/attachments/a59f1839-bff4-4cb8-bf63-116385717fb2)</textarea>
+		
+		<input type="checkbox" id="useClass" />
+		<label for="useClass">Use CSS classes (for <a href="https://cloudwithlightning.net/random/chostin/prechoster/">prechoster</a>)</label><br>
+		<input type="checkbox" id="preview" />
+		<label for="preview">Preview (NB! doesn't filter HTML like cohost does)</label>
+		
+		<input type="button" id="convert" value="Convert" />
+		
+		<div for="preview">
+			Preview: <div id="outPreview"></div>
+		</div>
+		
+		HTML:<textarea id="out"></textarea>
+		
+		<div for="useClass">
+			CSS: <textarea id="css"></textarea>
+		</div>
+	</div>
+	<script src="script.js"></script>
+</body></html>

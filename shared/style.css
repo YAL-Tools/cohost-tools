@@ -1,0 +1,171 @@
+html {
+	font: 15px sans-serif;
+}
+body {
+	margin: 0;
+	
+	--light-back-color: #899FC6;
+	--light-page-color: #E1EAEF;
+	--light-text-color: #000000;
+	--light-link-color: #1982d1;
+	--light-tbox-back-color: #FFFFFF;
+	--light-tbox-fore-color: #000000;
+	--light-tbox-border-color: #a0a0a0;
+	--light-button-back-color: #CDD6E0;
+	--light-button-hover-color: #f7fbff;
+	--light-button-fore-color: #000000;
+	--light-button-border-color: #a0a0a0;
+	
+	/* you know what, these could be cohost-styled */
+	--light-page-color: #FFF9F2;
+	--light-button-back-color: #83254F;
+	--light-button-hover-color: #671A3D;
+	--light-button-fore-color: white;
+	--light-button-border-color: transparent;
+	--light-link-color: rgb(229, 107, 111);
+	
+	--dark-back-color: #405070;
+	--dark-page-color: #1A202D;
+	--dark-text-color: #FFFFFF;
+	--dark-link-color: #9DEC76;
+	--dark-tbox-back-color: #000000;
+	--dark-tbox-fore-color: #FFFFFF;
+	--dark-tbox-border-color: #899FC6;
+	--dark-button-back-color: #324163;
+	--dark-button-hover-color: #4a6092;
+	--dark-button-fore-color: #FFFFFF;
+	--dark-button-border-color: #899FC6;
+}
+.page {
+	--back-color: var(--light-back-color);
+	--page-color: var(--light-page-color);
+	--text-color: var(--light-text-color);
+	--link-color: var(--light-link-color);
+	
+	--tbox-back-color: var(--light-tbox-back-color);
+	--tbox-fore-color: var(--light-tbox-fore-color);
+	--tbox-border-color: var(--light-tbox-border-color);
+	
+	--button-back-color: var(--light-button-back-color);
+	--button-hover-color: var(--light-button-hover-color);
+	--button-fore-color: var(--light-button-fore-color);
+	--button-border-color: var(--light-button-border-color);
+}
+#theme-switch:checked + .page {
+	--back-color: var(--dark-back-color);
+	--page-color: var(--dark-page-color);
+	--text-color: var(--dark-text-color);
+	--link-color: var(--dark-link-color);
+	
+	--tbox-back-color: var(--dark-tbox-back-color);
+	--tbox-fore-color: var(--dark-tbox-fore-color);
+	--tbox-border-color: var(--dark-tbox-border-color);
+	
+	--button-back-color: var(--dark-button-back-color);
+	--button-hover-color: var(--dark-button-hover-color);
+	--button-fore-color: var(--dark-button-fore-color);
+	--button-border-color: var(--dark-button-border-color);
+}
+@media (prefers-color-scheme: dark) {
+	body {
+		--back-color: var(--dark-back-color);
+		--page-color: var(--dark-page-color);
+		--text-color: var(--dark-text-color);
+		--link-color: var(--dark-link-color);
+		
+		--tbox-back-color: var(--dark-tbox-back-color);
+		--tbox-fore-color: var(--dark-tbox-fore-color);
+		--tbox-border-color: var(--dark-tbox-border-color);
+		
+		--button-back-color: var(--dark-button-back-color);
+		--button-hover-color: var(--dark-button-hover-color);
+		--button-fore-color: var(--dark-button-fore-color);
+		--button-border-color: var(--dark-button-border-color);
+	}
+	#theme-switch:checked + .page {
+		--back-color: var(--light-back-color);
+		--page-color: var(--light-page-color);
+		--text-color: var(--light-text-color);
+		--link-color: var(--light-link-color);
+		
+		--tbox-back-color: var(--light-tbox-back-color);
+		--tbox-fore-color: var(--light-tbox-fore-color);
+		--tbox-border-color: var(--light-tbox-border-color);
+		
+		--button-back-color: var(--light-button-back-color);
+		--button-hover-color: var(--light-button-hover-color);
+		--button-fore-color: var(--light-button-fore-color);
+		--button-border-color: var(--light-button-border-color);
+	}
+}
+.page {
+	min-height: 100%;
+	min-height: 100vh;
+	background: var(--back-color);
+}
+.page a, .page a:visited {
+	color: var(--link-color);
+}
+.app .faux-link {
+	color: var(--link-color);
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+.app {
+	background: var(--page-color);
+	color: var(--text-color);
+	max-width: 640px;
+	padding: 0.5rem;
+	margin: 0 auto;
+	box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+}
+.app textarea,
+.app input[type="text"],
+.app input[type="number"],
+.app input:not([type]) {
+	background: var(--tbox-back-color);
+	color: var(--tbox-fore-color);
+	border: 1px solid var(--tbox-border-color)
+}
+.app input[type="button"] {
+	background: var(--button-back-color);
+	color: var(--button-fore-color);
+	border: 1px solid var(--button-border-color);
+	padding: 0.4em 0.5em;
+}
+.app input[type="button"]:hover {
+	background: var(--button-hover-color);
+}
+.app input.big {
+	line-height: 2;
+	width: 100%;
+	box-sizing: border-box;
+	margin: 0.5em 0;
+}
+.app > table,
+.app > textarea {
+	width: 100%;
+	box-sizing: border-box;
+}
+.app > textarea {
+	resize: vertical;
+}
+.app > table {
+	color: var(--text-color);
+}
+table.props td:first-child:not([colspan]) {
+	text-align: right;
+}
+table.props td[colspan] {
+	text-align: center;
+}
+
+td > input:not([type="checkbox"]):first-child:last-child,
+td > textarea:first-child:last-child {
+	box-sizing: border-box;
+	width: 100%;
+}
+td > textarea:first-child:last-child {
+	resize: vertical;
+}

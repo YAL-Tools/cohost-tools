@@ -1,0 +1,103 @@
+<html><head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Cohost inline details generator</title>
+	<link rel="stylesheet" href="../shared/style.css" />
+	<style type="text/css">
+		#presets {
+			line-height: 1.35;
+		}
+		#presets[open] summary {
+			margin-bottom: 0.5em;
+		}
+	</style>
+</head><body>
+	<input type="checkbox" id="theme-switch" style="display:none"/>
+<div class="page">
+	<style id="preview-css"></style>
+	<div class="app">
+		<label for="theme-switch" class="faux-link">Toggle dark mode</label>
+		· tool by YellowAfterlife (<a href="https://yal.cc">web</a>
+		· <a href="https://cohost.org/YellowAfterlife">cohost</a>)
+		· <a href="">source code</a>
+		
+		<h1>Inline details generator for cohost!</h1>
+		
+		<table class="props" style="font-size: 14px">
+		<tr>
+			<td colspan="2">Frame</td>
+		</tr><tr>
+			<td width="1%">Background</td>
+			<td><input id="prop-outer-bg" value="#3e66b6"/></td>
+		</tr><tr>
+			<td>Custom CSS</td>
+			<td><textarea id="prop-outer-css">box-shadow: 0 0 0 1px black;
+border-radius: 0.3em;</textarea></td>
+		</tr>
+		<tr>
+			<td colspan="2">Title</td>
+		</tr><tr>
+			<td>Text color</td>
+			<td><input id="prop-outer-color" value="#ffffff"/></td>
+		</tr><tr>
+			<td>Custom CSS</td>
+			<td><textarea id="prop-title-css"></textarea></td>
+		</tr>
+		<tr>
+			<td colspan="2">Content</td>
+		</tr><tr>
+			<td>Background</td>
+			<td><input id="prop-inner-bg" value="#ffffff"/></td>
+		</tr><tr>
+			<td>Text color</td>
+			<td><input id="prop-inner-color" value="#000000"/></td>
+		</tr><tr>
+			<td>Custom CSS</td>
+			<td><textarea id="prop-inner-css">padding: 0 0.2em;
+border-radius: 0.1em;</textarea></td>
+		</tr>
+		<tr>
+			<td colspan="2">Other stuff</td>
+		</tr><tr>
+			<td><abbr title="Adds horizontal padding for the frame and bottom margin for the content">Spacing</abbr></td>
+			<td><input id="prop-outer-spacing" value="0.2em"/></td>
+		</tr><!--<tr>
+			<td><input type="checkbox" id="css-classes" /></td>
+			<td><label for="css-classes">Use CSS classes (for prechoster)</label></td>
+		</tr>-->
+		<tr>
+			<td>Settings</td>
+			<td><div style="display: flex">
+				<input id="save-settings" type="button" value="Save JSON" />
+				<input id="load-settings-proxy" type="button" value="Load JSON" style="margin: 0 0.3em" onclick="document.getElementById('load-settings').click()"/>
+				<input id="preset-name" type="text" style="flex-grow:1; width: 0" value="My Cool Style"/>
+			</div></td>
+		</tr>
+		<tr>
+			<td valign="top">Presets</td>
+			<td><details id="presets">
+				<summary><b>Warning:</b> loading a preset will overwrite your settings!</summary>
+			</details></td>
+		</tr>
+		</table>
+		
+		<input type="button" class="big" value="Generate" id="proc" style="margin-top: 1.5em"/>
+		<div style="line-height: 1.35; margin: 1em 0;">
+			This is an example of how your <span id="preview">
+				<details style="display:inline-flex;padding:0 0.2em;background:#3e66b6;color:#ffffff;box-shadow: 0 0 0 1px black;border-radius: 0.3em"><summary style="display:inline;font-size:0;cursor:default"><span style="font-size: 1rem">details-window</span></summary><div style="background:#ffffff;color:#000000;margin-bottom:0.2em;padding: 0 0.2em;border-radius: 0.1em">I'm just going to add a little text here so that the window gets wide enough for text wrapping to be visible. After all, that's what you're here for, isn't it?</div></details>
+			</span> might look like!
+			Click to open it and play around with settings.
+		</div>
+		<p>Here's HTML to copy and edit:</p>
+		<textarea id="out" rows="8"></textarea>
+		<!--<p>CSS:</p>
+		<textarea id="out-css" rows="8"></textarea>-->
+		<form id="load-settings-form" style="display: none">
+			<input id="load-settings" type="file"/>
+		</form>
+	</div>
+	<script src="script.js"></script>
+	<script src="../shared/FileSaver.min.js" async></script>
+	<script src="../shared/state-helper.js" async></script>
+	<script src="presets.js" async></script>
+</div></body></html>

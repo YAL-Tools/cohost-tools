@@ -1,0 +1,54 @@
+body {
+	background: #899FC6;
+	font: 15px sans-serif;
+	margin: 0;
+	overflow-y: scroll;
+	
+	--color-notWhite: 255 249 242;
+	--color-text: var(--color-notWhite);
+	--color-cherry: 131 37 79;
+	--color-strawberry: 229 107 111;
+	--color-foreground-200: 238 173 199;
+	--color-foreground-300: 211 116 155;
+	--color-foreground-400: 174 68 115;
+	--color-foreground-600: 103 26 61;
+	--color-foreground-700: 81 17 46;
+	--color-foreground-800: 59 9 32;
+	--color-foreground: var(--color-cherry);
+	--color-cherry: 131 37 79;
+	--color-notWhite: 255 249 242;
+    --color-notBlack: 25 25 25;
+	--color-secondary-200: 244 187 187;
+    --color-secondary-300: 238 153 155;
+    --color-secondary-400: 229 107 111;
+    --color-secondary-600: 164 42 47;
+    --color-secondary-700: 123 27 31;
+	--color-secondary: var(--color-strawberry);
+}
+.page {
+	max-width: 640px;
+	padding: 0.5rem;
+	background: white;
+	margin: 0 auto;
+	box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+}
+textarea {
+	display: block;
+	width: 100%;
+	box-sizing: border-box;
+	resize: vertical;
+	border: 1px solid #555;
+	height: 300px;
+	max-height: 50vh;
+	margin: 0.3rem 0;
+	font-family: sans-serif;
+	line-height: 1.25;
+}
+input[type="button"] {
+	display: block;
+	width: 90%;
+	height: 2rem;
+	margin: 0.5rem auto;
+}
+#useClass:not(:checked) ~ div[for="useClass"] { display: none }
+#preview:not(:checked) ~ div[for="preview"] { display: none }
