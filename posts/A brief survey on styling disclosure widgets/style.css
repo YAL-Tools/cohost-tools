@@ -1,0 +1,96 @@
+details.noarrow summary {
+  display: block;
+  font-size: 0;
+}
+details.noarrow summary span {
+  font-size: 1rem;
+}
+details.underline summary span {
+  text-decoration: underline;
+  text-decoration-style: dotted
+}
+
+details.tip {
+  display: inline-block;
+  vertical-align: top;
+}
+details.tip summary {
+  display: inline;
+  font-size: 0;
+}
+details.tip summary span {
+  font-size: 1rem;
+  text-decoration: underline;
+  text-decoration-style: dotted;
+}
+details.tip > span {
+  display: inline-block;
+  border: 0.25em solid transparent;
+  border-top-width: 0;
+  border-bottom-color: black;
+  position: relative;
+  margin-right: -0.5em;
+  left: calc(-50% - 0.25em);
+  top: 0.5em;
+}
+details.tip div {
+  position: absolute;
+  background: rgb(255 249 242);
+  left: 1em;
+  right: 1em;
+  margin-top: 0.10em;
+  border: 1px solid black;
+  padding: 0.1em 0.3em;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+details.block {
+  display: inline-flex;
+  background: linear-gradient(120deg,
+                              #3E66B6 3rem,
+                              #14367B 3rem,
+                              #14367B 4rem,
+                              #3E66B6 4rem,
+                              #3E66B6 5rem,
+                              #14367B 5rem
+                             );
+  padding: 0 0.2em;
+  border-radius: 0.3em;
+  border: 1px solid black;
+}
+details.block summary {
+  display: inline;
+  color: white;
+  font-size: 0;
+}
+details.block summary span {
+  font-size: 1rem;
+}
+details.block div {
+  background: white;
+  padding: 0 0.2em;
+  margin-bottom: 0.2em;
+  border-radius: 0.1em;
+}
+
+div.p {
+  margin: 1.25em 0;
+  line-height: 1.35;
+}
+div.rel {
+  position: relative;
+}
+details.contents {
+  display: contents;
+}
+details.contents summary {
+  display: inline-block;
+  font-size: 0;
+  text-decoration: underline dotted;
+  -webkit-text-decoration: underline dotted;
+}
+details.contents summary span {
+  font-size: 1rem;
+  cursor: pointer;
+}
+
