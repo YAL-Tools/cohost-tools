@@ -19,7 +19,7 @@
 		<label for="theme-switch" class="faux-link">Toggle dark mode</label>
 		· tool by YellowAfterlife (<a href="https://yal.cc">web</a>
 		· <a href="https://cohost.org/YellowAfterlife">cohost</a>)
-		· <a href="">source code</a>
+		· <a href="https://github.com/YAL-Tools/cohost-tools">source code</a>
 		
 		<h1>Inline details generator for cohost!</h1>
 		
@@ -95,6 +95,12 @@ border-radius: 0.1em;</textarea></td>
 		<form id="load-settings-form" style="display: none">
 			<input id="load-settings" type="file"/>
 		</form>
+		<p>
+			<b>Note:</b> Inline <code>&lt;details&gt;</code> blocks have to be placed
+			inside a <code>&lt;div&gt;</code> rather than just a paragraph -
+			since disclosure elements are usually blocks, cohost breaks the paragraph
+			for them by default.
+		</p>
 	</div>
 	<script src="script.js"></script>
 	<script src="../shared/FileSaver.min.js" async></script>
