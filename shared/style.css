@@ -67,7 +67,7 @@ body {
 	--button-border-color: var(--dark-button-border-color);
 }
 @media (prefers-color-scheme: dark) {
-	body {
+	.page {
 		--back-color: var(--dark-back-color);
 		--page-color: var(--dark-page-color);
 		--text-color: var(--dark-text-color);
@@ -162,6 +162,7 @@ table.props td[colspan] {
 }
 
 td > input:not([type="checkbox"]):first-child:last-child,
+td > select:first-child:last-child,
 td > textarea:first-child:last-child {
 	box-sizing: border-box;
 	width: 100%;

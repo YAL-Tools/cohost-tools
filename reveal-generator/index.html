@@ -1,0 +1,161 @@
+<html><head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Reveal/comparison generator for cohost!</title>
+	<link rel="stylesheet" href="../shared/style.css" />
+	<style type="text/css">
+		#presets {
+			line-height: 1.35;
+		}
+		#presets[open] summary {
+			margin-bottom: 0.5em;
+		}
+	</style>
+</head><body>
+	<input type="checkbox" id="theme-switch" style="display:none"/>
+<div class="page">
+	<style id="preview-css"></style>
+	<div class="app">
+		A tool by YellowAfterlife (<a href="https://yal.cc">web</a>
+		· <a href="https://cohost.org/YellowAfterlife">cohost</a>)
+		<br>
+		Links:
+		<a href="https://github.com/YAL-Tools/cohost-tools">source code</a>
+		· <a href="https://yal.cc/tools/cohost/">more tools!</a>
+		<br>
+		Controls: <label for="theme-switch" class="faux-link">toggle dark mode</label>
+		
+		<h1>Reveal/comparison generator for cohost!</h1>
+		
+		<table class="props" style="font-size: 14px">
+		<tr>
+			<td colspan="2">General</td>
+		</tr><tr>
+			<td width="1%">Image 1</td>
+			<td><input id="img-1" value="https://staging.cohostcdn.org/attachment/f768b8b9-a459-443d-9f3f-13ee5796ac64/ctjs-cat-0-bg.png"/></td>
+		</tr><tr>
+			<td>Image 2</td>
+			<td><input id="img-2" value="https://staging.cohostcdn.org/attachment/4cefdd7d-e584-440e-8d97-2ef773c3a1fa/ctjs-cat-2-bg.png"/></td>
+		</tr><tr>
+			<td></td>
+			<td>Images should:
+				<ul style="margin: 0.3em 0">
+					<li>Be opaque</li>
+					<li>Have the same dimensions</li>
+					<li>(ideally) be hosted on cohost<br>(attach images to a draft post, save, copy URLs from your Drafts page)</li>
+				</ul>
+			</td>
+		</tr><tr>
+			<td>Direction</td>
+			<td><select id="direction">
+				<option value=""">Toggle</option>
+				<option selected value="right">Right</option>
+				<option value="left">Left</option>
+				<option value="up">Up</option>
+				<option value="down">Down</option>
+			</select></td>
+		</tr>
+		
+		<tr>
+			<td colspan="2">Controls</td>
+		</tr><tr>
+			<td>Background</td>
+			<td><input id="round-bg" value="#ffffff"/></td>
+		</tr><tr>
+			<td>Color</td>
+			<td><input id="round-fg" value="#000000"/></td>
+		</tr><tr>
+			<td>Custom CSS</td>
+			<td><textarea id="round-css">box-shadow: 0 0 0.2rem rgba(0, 0, 0, 0.3)
+border-radius: 50%</textarea></td>
+		</tr>
+		
+		<tr>
+			<td colspan="2">"Reveal" button</td>
+		</tr><tr>
+			<td>Label</td>
+			<td><input id="reveal-label" value="👀"/></td>
+		</tr><tr>
+			<td>Custom CSS</td>
+			<td><textarea id="reveal-css">top: 0.3rem
+left: 0.3rem</textarea></td>
+		</tr>
+		
+		<tr>
+			<td colspan="2">"About" button</td>
+		</tr><tr>
+			<td><input type="checkbox" id="about-enable" checked/></td>
+			<td><label for="about-enable">Enable</label></td>
+		</tr><tr>
+			<td>Label</td>
+			<td><input id="about-label" value="?"/></td>
+		</tr><tr>
+			<td>Custom CSS</td>
+			<td><textarea id="about-css">right: 0.3rem
+bottom: 0.3rem
+transform: scale(70%)</textarea></td>
+		</tr><tr>
+			<td>Popup HTML</td>
+			<td><textarea id="about-popup-html"><a href="https://yal.cc/tools/cohost/reveal-generator/">Template</a> by YellowAfterlife.<br>
+Dragging might not work with touch!</textarea></td>
+		</tr><tr>
+			<td>Popup CSS</td>
+			<td><textarea id="about-popup-css">position: absolute
+right: 2.5rem
+bottom: 0.5rem
+padding: 0.2rem 0.5rem
+box-shadow: 0 0 0.2rem rgba(0, 0, 0, 0.3)
+background: white
+color: black
+max-width: calc(100% - 3.5rem)</textarea></td>
+		</tr>
+		
+		<tr>
+			<td colspan="2">Other stuff</td>
+		</tr><tr>
+			<td><input type="checkbox" id="css-classes" /></td>
+			<td><label for="css-classes">Use CSS classes (for prechoster)</label></td>
+		</tr>
+		<tr>
+			<td>Settings</td>
+			<td><div style="display: flex">
+				<input id="save-settings" type="button" value="Save JSON" />
+				<input id="load-settings-proxy" type="button" value="Load JSON" style="margin: 0 0.3em" onclick="document.getElementById('load-settings').click()"/>
+				<input id="preset-name" type="text" style="flex-grow:1; width: 0" value="My Cool Style"/>
+			</div></td>
+		</tr>
+		</table>
+		
+		<input type="button" class="big" value="Generate" id="proc" style="margin-top: 1.5em"/>
+		
+		<p>
+			Preview:
+		</p>
+		<div id="preview"></div>
+		
+		<p>Here's the HTML:</p>
+		<textarea id="out" rows="8"></textarea>
+		
+		<p>And here's CSS for prechoster (if enabled):</p>
+		<textarea id="out-css" rows="8"></textarea>
+		<!--<p>CSS:</p>
+		<textarea id="out-css" rows="8"></textarea>-->
+		<form id="load-settings-form" style="display: none">
+			<input id="load-settings" type="file"/>
+		</form>
+	</div>
+	<script src="../shared/css-inliner.js"></script>
+	<script src="script.js"></script>
+	<script src="../shared/FileSaver.min.js" async></script>
+	<script src="../shared/state-helper.js" async></script>
+	
+	<!-- Google tag (gtag.js) -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-4R5QPPHC8M"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'G-4R5QPPHC8M');
+	</script>
+</div></body></html>
