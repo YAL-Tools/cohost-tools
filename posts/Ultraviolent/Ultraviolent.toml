@@ -1,0 +1,263 @@
+version = 1
+title = 'Ultraviolent'
+
+[[modules]]
+plugin = 'source.text'
+data.contents = '''
+<table class="ultraviolent">
+  <tr><th colspan="2" class="title">
+    <div class="tx">Evolving from violent language to ultraviolent language</div>
+  </th></tr>
+  <tr><th width="50%">
+    <div class="symbol no">✕</div>
+    <div class="symbol-box">Instead of</div>
+  </th><th width="50%">
+    <div class="symbol yes">✓</div>
+    <div class="symbol-box">Say this</div>
+  </th></tr>
+  <tr><td>
+    We're going to <span>pull the trigger</span>
+  </td><td>
+    We're <span>launching all missiles</span>
+  </td></tr>
+  <tr><td>
+    I'll take a <span>stab at [it]</span>
+  </td><td>
+    I'll take <span>several stabs at [it]</span>
+  </td></tr>
+  <tr><td>
+    Did we <span>jump the gun</span>?
+  </td><td>
+    Did we <span>dodge into the bullet</span>?
+  </td></tr>
+  <tr><td>
+    I'll <span>bite the bullet</span>
+  </td><td>
+    I'll <span>bite the bullet til it screams</span>
+  </td></tr>
+  <tr><td>
+    That'll <span>kill</span> two birds with one stone
+  </td><td>
+    That'll <span>murder</span> two birds with one stone
+  </td></tr>
+  <tr><td>
+    What's the <span>deadline</span>?
+  </td><td>
+    When does the <span>kill switch trigger</span>?
+  </td></tr>
+  <tr><td>
+    We have to pick our <span>battles</span>
+  </td><td>
+    We have to pick our <span>war crimes</span>
+  </td></tr>
+  <tr><td>
+    Can you <span>shoot me</span> an email?
+  </td><td>
+    Can you <span>full auto me</span> an email?
+  </td></tr>
+  <tr><td>
+    That was <span>overkill</span>
+  </td><td>
+    That was <span>megadeath overkill</span>
+  </td></tr>
+  <tr><td>
+    I <span>bombed</span> the presentation
+  </td><td>
+    I <span>carpet bombed</span> the presentation
+  </td></tr>
+  <tr><td>
+    Let's just <span>roll with the punches</span>
+  </td><td>
+    Let's just <span>launch a frontal assault</span>
+  </td></tr>
+  <tr><td>
+    We can <span>soften the blow</span> by...
+  </td><td>
+    We can <span>not get our asses kicked so hard</span> by...
+  </td></tr>
+  <tr><td>
+    I'm going to <span>take a shot in the dark</span>
+  </td><td>
+    I'm going to <span>empty a magazine in the dark</span>
+  </td></tr>
+  <tr><td>
+    That's not a <span>bad idea</span>
+  </td><td>
+    That's a <span>kick-ass</span> idea
+  </td></tr>
+  <tr><td>
+    Let's not <span>beat a dead horse</span>
+  </td><td>
+    Let's not <span>beat a dead horse when we can beat a live one</span>
+  </td></tr>
+  <tr><td>
+    I was <span>blown away</span> by her presentation
+  </td><td>
+    I was <span>murdered on the spot</span> by her presentation
+  </td></tr>
+  <tr><td>
+    I was <span>kicking</span> around an idea
+  </td><td>
+    I was <span>roundhouse kicking</span> an idea
+  </td></tr>
+  <tr><td>
+    He's a <span>straight shooter</span> in meetings
+  </td><td>
+    He's a <span>laser-guided smart bomb</span> in meetings
+  </td></tr>
+  <tr><td colspan="2">
+    <a href="https://web.archive.org/web/20230201204826/twitter.com/chaosprime/status/1620573166082093058">archive</a> of original tweet · <a href="https://github.com/YAL-Tools/cohost-tools/tree/main/posts/Ultraviolent">source code</a>
+  </td></tr>
+</table>'''
+data.language = 'html'
+sends = [2]
+
+[[modules]]
+plugin = 'source.lesscss'
+data.contents = '''
+@gray: #8080804d;
+@no: #D18585;
+@yes: #91C37C;
+
+.ultraviolent {
+  margin: 1px 1px;
+  width: 100%;
+  font-weight: 600;
+  font-size: 105%;
+  position: relative;
+  outline: 1px solid @gray;
+  
+  background-image: url("@{bg2}");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: bottom;
+}
+/*.ultraviolent tr:first-child,
+.ultraviolent tr:nth-child(2)*/
+.ultraviolent tr {
+  border-bottom: 0;
+}
+.ultraviolent td:nth-child(2) {
+  border-left: 1px solid #8080804d;
+}
+.ultraviolent tr:last-child {
+  height: 2em;
+  td {
+    text-align: left;
+    padding-left: 0.5em;
+    font-size: 70%;
+    font-weight: 500;
+  }
+}
+
+.title {
+  font-size: 250%;
+  text-transform: uppercase;
+  font-weight: 300;
+  padding: 1em 0 0.5em 0;
+  line-height: 1.25;
+
+  background-image: url("@{bg1}");
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+.title .tx {
+  width: 80%;
+  margin: 0 auto;
+}
+th {
+  position: relative;
+}
+
+.symbol {
+  background: #777;
+  color: white;
+  
+  width: 2em;
+  height: 2em;
+  border-radius: 50%;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 140%;
+  
+  position: absolute;
+  left: calc(50% - 1em);
+}
+.symbol.no {
+  background: #D18585;
+}
+.symbol.yes {
+  background: #91C37C;
+}
+.symbol-box {
+  background: #2A2A2ACC;
+  color: white;
+  text-transform: uppercase;
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 1.75em;
+  padding: 0.5em;
+  font-weight: 600;
+  font-size: 125%;
+}
+
+td {
+  text-align: center;
+  vertical-align: middle;
+}
+td:first-child span {
+  color: @no;
+}
+td:last-child span {
+  color: @yes;
+}'''
+sends = [2]
+
+[[modules]]
+plugin = 'transform.style-inliner'
+data.mode = 'attr'
+sends = [3]
+
+[[modules]]
+plugin = 'transform.svg-to-background'
+data.useSvgo = true
+sends = ['output']
+
+[[modules]]
+plugin = 'source.text'
+data.contents = '''
+<svg width="874" height="250" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="m43.7 0 36.2 18.4-57.6 0.207 54.6 79.7-70.9-58.6-0.418 64.9-5.63-6.44v37.7c14.7 6.25 27.9 1.07 38.2-27.7 22.4 40.1 52.4 41.3 64.7 29 18.4-18.4 18.9-51-31.3-81.1 18.7 1.56 33.7-12.4 35.9-30.4 0.859-7.2-2.65-16.6-11.4-25.4zm79.3 0c24.6 29.2 7.74 48.8-7.63 68.8 40.2 42.1 32.1 74.4 13.3 92.4-18.8 18-62.6 17.8-82.2-8.97-11.1 8.8-21.7 20.6-46.5 13.9v23.6c15.3 4.78 30.6 2.14 45.9-7.91 75.3 57.9 168-43.1 101-113 13.3-25.7 14.5-48.4 5.27-68.4z" fill-opacity=".3" fill="#808080"/>
+</svg>
+'''
+data.language = 'html'
+sends = [5]
+title = 'Top SVG'
+graphPos = [-960, 24]
+
+[[modules]]
+plugin = 'transform.to-data-url'
+data.mime = 'image/svg+xml'
+namedSends = { '1' = ['bg1'] }
+title = 'Top URL'
+graphPos = [-768, 24]
+
+[[modules]]
+plugin = 'source.text'
+data.contents = '''
+<svg width="874" height="250" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="m874 151c-14.7 2.74-27.3 12.4-22.8 42-29.4-28.9-90.9-12.2-57.8 47.2-35.6-6.02-52.4-0.569-60.4 10.3h129l-41.5-36.9 53.5 19.3z" fill-opacity=".3" fill="#808080"/>
+</svg>'''
+data.language = 'html'
+sends = [7]
+title = 'Bot SVG'
+graphPos = [-960, 120]
+
+[[modules]]
+plugin = 'transform.to-data-url'
+data.mime = 'image/svg+xml'
+namedSends = { '1' = ['bg2'] }
+title = 'Bot URL'
+graphPos = [-768, 120]
