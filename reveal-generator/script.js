@@ -71,10 +71,23 @@ function render(sep) {
 		"-clickable": [
 			"cursor: pointer",
 		],
+		"-about": [
+			"font-size: 0",
+		],
 		"-summary-span": [
 			"font-size: 1rem",
 		],
 	};
+	if (propValue("css-safety")) {
+		styles["-one"].push(
+			"max-width: 100%",
+			"vertical-align: middle",
+		);
+		styles["-two"].push(
+			"max-width: 100%",
+			//"vertical-align: middle",
+		);
+	}
 	
 	let sizeHTML = "";
 	if (isDir) {
@@ -90,10 +103,10 @@ function render(sep) {
 	if (propValue("about-enable")) {
 		let aboutLabel = propValue("about-label");
 		let aboutPopupHTML = propValue("about-popup-html");
-		styles["-about"] = propLines("about-css");
+		styles["-about"] = styles["-about"].concat(propLines("about-css"));
 		styles["-about-popup"] = propLines("about-popup-css");
 		aboutHTML = `<details>
-			<summary class="reveal-round reveal-clickable reveal-about">${aboutLabel}</summary>
+			<summary class="reveal-round reveal-clickable reveal-about"><span class="reveal-summary-span">${aboutLabel}</span></summary>
 			<div class="reveal-about-popup">${aboutPopupHTML}</div>
 		</details>`
 	}

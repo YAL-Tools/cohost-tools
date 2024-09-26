@@ -1,7 +1,7 @@
 <html><head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width">
-	<title>Reveal/comparison generator for cohost!</title>
+	<title>CSS-only reveal/frame comparison generator!</title>
 	<link rel="stylesheet" href="../shared/style.css" />
 	<style type="text/css">
 		#presets {
@@ -25,24 +25,30 @@
 		<br>
 		Controls: <label for="theme-switch" class="faux-link">toggle dark mode</label>
 		
-		<h1>Reveal/comparison generator for cohost!</h1>
+		<h1 style="margin-bottom: 0;">CSS-only reveal/comparison generator!</h1>
+		<p style="margin-top: 0; font-style: italic;">
+			For cohost! and in general
+		</p>
+		
+		<p>
+			<b>New:</b> <a href="https://yal.cc/css-only-frame-comparison">a blog post on how it works</a>
+		</p>
 		
 		<table class="props" style="font-size: 14px">
 		<tr>
 			<td colspan="2">General</td>
 		</tr><tr>
 			<td width="1%">Image 1</td>
-			<td><input id="img-1" value="https://staging.cohostcdn.org/attachment/f768b8b9-a459-443d-9f3f-13ee5796ac64/ctjs-cat-0-bg.png"/></td>
+			<td><input id="img-1" value="https://yal.cc/wp-content/uploads/2024/09/ctjs-cat-0-bg.png"/></td>
 		</tr><tr>
 			<td>Image 2</td>
-			<td><input id="img-2" value="https://staging.cohostcdn.org/attachment/4cefdd7d-e584-440e-8d97-2ef773c3a1fa/ctjs-cat-2-bg.png"/></td>
+			<td><input id="img-2" value="https://yal.cc/wp-content/uploads/2024/09/ctjs-cat-2-bg.png"/></td>
 		</tr><tr>
 			<td></td>
 			<td>Images should:
 				<ul style="margin: 0.3em 0">
 					<li>Be opaque</li>
 					<li>Have the same dimensions</li>
-					<li>(ideally) be hosted on cohost<br>(attach images to a draft post, save, copy URLs from your Drafts page)</li>
 				</ul>
 			</td>
 		</tr><tr>
@@ -114,7 +120,10 @@ max-width: calc(100% - 3.5rem)</textarea></td>
 			<td colspan="2">Other stuff</td>
 		</tr><tr>
 			<td><input type="checkbox" id="css-classes" /></td>
-			<td><label for="css-classes">Use CSS classes (for prechoster)</label></td>
+			<td><label for="css-classes">Use CSS classes (for prechoster / your own site)</label></td>
+		</tr><tr></tr>
+			<td><input type="checkbox" id="css-safety" checked/></td>
+			<td><label for="css-safety">Add styles for safety (enable if images don't line up on your own site)</label></td>
 		</tr>
 		<tr>
 			<td>Settings</td>
@@ -136,7 +145,7 @@ max-width: calc(100% - 3.5rem)</textarea></td>
 		<p>Here's the HTML:</p>
 		<textarea id="out" rows="8"></textarea>
 		
-		<p>And here's CSS for prechoster (if enabled):</p>
+		<p>And here's CSS (if enabled):</p>
 		<textarea id="out-css" rows="8"></textarea>
 		<!--<p>CSS:</p>
 		<textarea id="out-css" rows="8"></textarea>-->
