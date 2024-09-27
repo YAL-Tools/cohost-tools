@@ -26,8 +26,8 @@
 		Controls: <label for="theme-switch" class="faux-link">toggle dark mode</label>
 		
 		<h1 style="margin-bottom: 0;">CSS-only reveal/comparison generator!</h1>
-		<p style="margin-top: 0; font-style: italic;">
-			For cohost! and in general
+		<p style="margin-top: 0">
+			For <i>cohost!</i> and in general
 		</p>
 		
 		<p>
@@ -41,8 +41,20 @@
 			<td width="1%">Image 1</td>
 			<td><input id="img-1" value="https://yal.cc/wp-content/uploads/2024/09/ctjs-cat-0-bg.png"/></td>
 		</tr><tr>
+			<td>Alt text 1</td>
+			<td><input id="alt-1" value="" placeholder="Optional"/></td>
+		</tr><tr>
 			<td>Image 2</td>
 			<td><input id="img-2" value="https://yal.cc/wp-content/uploads/2024/09/ctjs-cat-2-bg.png"/></td>
+		</tr><tr>
+			<td>Alt text 2</td>
+			<td><input id="alt-2" value="" placeholder="Optional"/></td>
+		</tr><tr>
+			<td>Width</td>
+			<td><input id="width" type="number" value="" placeholder="Optional"/></td>
+		</tr><tr>
+			<td>Height</td>
+			<td><input id="height" type="number" value="" placeholder="Optional"/></td>
 		</tr><tr>
 			<td></td>
 			<td>Images should:
@@ -150,7 +162,7 @@ max-width: calc(100% - 3.5rem)</textarea></td>
 		<!--<p>CSS:</p>
 		<textarea id="out-css" rows="8"></textarea>-->
 		<form id="load-settings-form" style="display: none">
-			<input id="load-settings" type="file"/>
+			<input id="load-settings" type="file" accept=".json"/>
 		</form>
 	</div>
 	<script src="../shared/css-inliner.js"></script>

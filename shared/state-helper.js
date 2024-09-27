@@ -5,7 +5,7 @@ function serialize(roots, base) {
 	for (let root of roots) {
 		for (let el of root.querySelectorAll(
 			`input[id]:not([type="button"]), `+
-			`textarea`
+			`textarea[id], select[id]`
 		)) {
 			if (el.nodeName == "TEXTAREA") {
 				let lines = el.value.split("\n");
@@ -35,6 +35,11 @@ function deserialize(obj, roots) {
 			el = root.querySelector(`textarea#${fd}`);
 			if (el) {
 				if (Array.isArray(val)) val = val.join("\n");
+				el.value = val;
+				break;
+			}
+			el = root.querySelector(`select#${fd}`);
+			if (el) {
 				el.value = val;
 				break;
 			}
