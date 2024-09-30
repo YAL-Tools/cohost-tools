@@ -1,7 +1,7 @@
 <html><head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width">
-	<title>Cohost inline gallery generator</title>
+	<title>CSS-only gallery generator</title>
 	<link rel="stylesheet" href="style.css" />
 </head><body>
 	<style id="preview-css"></style>
@@ -13,19 +13,75 @@
 		<a href="https://github.com/YAL-Tools/cohost-tools">source code</a>
 		· <a href="https://yal.cc/tools/cohost/">more tools!</a>
 		
-		<h1>Inline gallery generator for cohost!</h1>
+		<h1 style="margin-bottom: 0;">CSS-only gallery generator!</h1>
+		<p style="margin-top: 0">
+			For <i>cohost!</i> and in general
+		</p>
+		
 		Input images (one per line; URL, <code>![alt](url)</code>, or <code>&lt;img&gt;</code>):<br>
 		(NB! images should be the same size)
-		<textarea id="in">![An image of the ct.js mascot, a sort of blue blob-cat. It is smiling.](https://cohost.org/api/v1/attachments/209ba72b-d829-4830-a243-1b8f2529bc1e)
-![With power of Inkscape, the cat now is now holding a knife in its paw.](https://cohost.org/api/v1/attachments/03b88f58-9c99-49aa-97fb-229d0cc1ab35)
-![The cat now has two knives.](https://cohost.org/api/v1/attachments/6c892384-eb92-4241-a6ed-6320318e9cca)
-![The cat is now holding a knife with its tail as well.](https://cohost.org/api/v1/attachments/3f9b389c-5ab7-43b7-949a-640629494b9f)
-![There is now a second, smaller cat, with its own knife. The knife is too big. The cat grips onto it with both of its little paws](https://cohost.org/api/v1/attachments/a59f1839-bff4-4cb8-bf63-116385717fb2)</textarea>
+		<textarea id="in">![An image of the ct.js mascot, a sort of blue blob-cat. It is smiling.](https://yal.cc/tools/cohost/gallery-generator/img/1.png)
+![With power of Inkscape, the cat now is now holding a knife in its paw.](https://yal.cc/tools/cohost/gallery-generator/img/2.png)
+![The cat now has two knives.](https://yal.cc/tools/cohost/gallery-generator/img/3.png)
+![The cat is now holding a knife with its tail as well.](https://yal.cc/tools/cohost/gallery-generator/img/4.png)
+![There is now a second, smaller cat, with its own knife. The knife is too big. The cat grips onto it with both of its little paws](https://yal.cc/tools/cohost/gallery-generator/img/5.png)</textarea>
 		
-		<input type="checkbox" id="useClass" />
-		<label for="useClass">Use CSS classes (for <a href="https://cloudwithlightning.net/random/chostin/prechoster/">prechoster</a>)</label><br>
-		<input type="checkbox" id="preview" />
-		<label for="preview">Preview (NB! doesn't filter HTML like cohost does)</label>
+		<table id="config"><tr><td>
+			<input type="checkbox" id="useClass" />
+			</td><td colspan="2">
+			<label for="useClass">Use CSS classes (for <a href="https://cloudwithlightning.net/random/chostin/prechoster/">prechoster</a> or your own site)</label>
+		</td></tr><tr><td>
+			<input type="checkbox" id="preview" checked/>
+			</td><td colspan="2">
+			<label for="preview">Preview (NB! doesn't filter HTML like cohost does)</label>
+		</td></tr><tr><td>
+			Pages
+			</td><td>
+			<input type="color" id="bg-page" value="#FFFFFF" />
+			</td><td>
+			<input type="color" id="fg-page" value="#000000" />
+		</td></tr>
+		
+		<tr><td colspan="3">
+			Buttons
+		</td></tr><!--<tr><td>
+			Size
+			</td><td>
+			<input type="text" id="button-width" value="40px" />
+			</td><td>
+			<input type="text" id="button-height" value="40px" />
+		</td></tr>--><tr><td>
+			Labels
+			</td><td>
+			<input type="text" id="lb-prev" value="&lt;" />
+			</td><td>
+			<input type="text" id="lb-next" value="&gt;" />
+		</td></tr><tr><td>
+			Enabled
+			</td><td>
+			<input type="color" id="bg-1" value="#671A3D" />
+			</td><td>
+			<input type="color" id="fg-1" value="#FFFFFF" />
+		</td></tr><tr><td>
+			Disabled
+			</td><td>
+			<input type="color" id="bg-0" value="#F4BBBB" />
+			</td><td>
+			<input type="color" id="fg-0" value="#FFFFFF" />
+		</td></tr>
+		
+		<tr><td colspan="3">
+			Settings
+		</td></tr><tr>
+			<td></td>
+			<td colspan="2">
+				<div style="display: flex">
+					<input id="save-settings" type="button" value="Save JSON" />
+					<input id="load-settings-proxy" type="button" value="Load JSON" style="margin: 0 0.3em" onclick="document.getElementById('load-settings').click()"/>
+					<input id="preset-name" type="text" style="flex-grow:1; width: 0" value="My Cool Style"/>
+				</div>
+			</td>
+		</tr></table>
 		
 		<input type="button" id="convert" value="Convert" />
 		
@@ -35,9 +91,15 @@
 		
 		HTML:<textarea id="out"></textarea>
 		
-		<div for="useClass">
+		<div>
 			CSS: <textarea id="css"></textarea>
 		</div>
+		
+		<form id="load-settings-form" style="display: none">
+			<input id="load-settings" type="file" accept=".json"/>
+		</form>
 	</div>
 	<script src="script.js"></script>
+	<script src="../shared/FileSaver.min.js" async></script>
+	<script src="../shared/state-helper.js" async></script>
 </body></html>

@@ -44,7 +44,21 @@ textarea {
 	font-family: sans-serif;
 	line-height: 1.25;
 }
-input[type="button"] {
+#config {
+	width: 100%;
+	font-size: 14px;
+}
+#config td:first-child:last-child {
+	text-align: center;
+}
+#config td:first-child:not(:last-child) {
+	text-align: right;
+}
+#config td input:not([type="checkbox"]):first-child:last-child {
+	width: 100%;
+	box-sizing: border-box;
+}
+input#convert {
 	display: block;
 	width: 90%;
 	height: 2rem;
