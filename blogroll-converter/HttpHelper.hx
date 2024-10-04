@@ -66,7 +66,7 @@ class HttpHelper {
 		var cachePath = Path.join([cacheDir, fname]);
 		if (FileSystem.exists(cachePath)) {
 			var html = File.getContent(cachePath);
-			if (html != "") {
+			if (true) { // use (html != "") to retry failed fetches
 				fromCache = true;
 				return html;
 			}

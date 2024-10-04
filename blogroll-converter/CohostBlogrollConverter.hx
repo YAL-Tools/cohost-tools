@@ -37,17 +37,24 @@ class CohostBlogrollConverter {
 			var notes = next();
 			var feed = next();
 			var button = next();
+			var shouldHaveFeed = false;
 			switch (feed) {
-				case "", "soon", "Y": feed = null;
+				case "", "soon": feed = null;
+				case "Y": {
+					shouldHaveFeed = true;
+					feed = null;
+				}
 			}
-			items.push({
+			var item:CohostBlogrollItem = {
 				name: name,
 				username: username,
 				url: url,
 				notes: notes,
 				feed: feed,
 				button: button,
-			});
+			};
+			if (shouldHaveFeed) item.shouldHaveFeed = true;
+			items.push(item);
 			//
 			if (feed == null) fetchCount += 1;
 		}
@@ -73,11 +80,13 @@ class CohostBlogrollConverter {
 				+ ")"
 			, "");
 		}
-		var errors = [];
+		//
 		var fetchIndex = 0;
 		var newFetches = 0;
 		HttpHelper.init();
 		var feeds = [];
+		var errors = [];
+		var brokenPromises = [];
 		for (item in items) {
 			if (item.feed != null) {
 				feeds.push(item.feed);
@@ -117,9 +126,17 @@ class CohostBlogrollConverter {
 				Sys.println('[error] ' + e.message);
 				item.error = e.message;
 			}
+			if (item.shouldHaveFeed && item.feed == null) {
+				brokenPromises.push('"${item.url}": ' + item.error);
+			}
 			//Sys.getChar(false);
 		}
 		Sys.println('New fetches: $newFetches');
+		brokenPromises.unshift("The following were marked as containing feeds, but we couldn't find them:");
+		if (brokenPromises.length == 1) {
+			brokenPromises.push("(no entries! All's well!)");
+		}
+		if (errors.length == 0) errors.push("(no errors!)");
 		//
 		var fcRoot = {
 			Instances: [{
@@ -131,7 +148,8 @@ class CohostBlogrollConverter {
 		File.saveContent("users.json", Json.stringify(items, null, "\t"));
 		File.saveContent("feedcord.json", Json.stringify(fcRoot, null, "  "));
 		File.saveContent("errors.txt", errors.join("\r\n"));
-		Sys.println("Updated users.json, feedcord.json, errors.txt");
+		File.saveContent("broken-promises.txt", brokenPromises.join("\r\n"));
+		Sys.println("Updated users.json, feedcord.json, errors.txt, broken-promises.txt");
 		Sys.println("Bye!");
 	} // main
 }
@@ -143,4 +161,5 @@ typedef CohostBlogrollItem = {
 	feed:String,
 	button:String,
 	?error:String,
+	?shouldHaveFeed:Bool,
 };

@@ -1,5 +1,6 @@
 /http-cache
 *.json
 errors.txt
+broken-promises.txt
 *.tsv
 *.n
