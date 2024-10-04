@@ -1,0 +1,5 @@
+/http-cache
+*.json
+errors.txt
+*.tsv
+*.n
